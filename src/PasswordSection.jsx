@@ -28,6 +28,8 @@ export default function PasswordSection() {
             if (isInString(CurrentPassword, SCharacters) && isInString(CurrentPassword, NumCharacters)) {
                 setErrorMessage("easter egg: password is *super* secure!!")
             } else setErrorMessage("password is secure :)")
+        } else if (CurrentPassword.length <= 5) {
+            setErrorMessage("password is too short")
         } else {
             var ContainsSC = isInString(CurrentPassword, SCharacters)
             var ContainsNum = isInString(CurrentPassword, NumCharacters)
