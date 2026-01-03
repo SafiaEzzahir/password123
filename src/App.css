@@ -5,6 +5,7 @@
   align-items: center;
   height: 96vh;
   font-family: "Montserrat", sans-serif;
+  color: #203669;
 }
 
 h1 {
@@ -23,4 +24,37 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#ErrorMessage {
+  font-size: 22px;
+  letter-spacing: 3.5px;
+  font-weight: 800;
+}
+
+input {
+  background-color: white;
+  color: #96BBE4;
+  border: 2px solid #203669;
+}
+
+.Good {
+  color: #38BDD2;
+}
+
+.Bad {
+  color: #E9998B;
+}
+
+.Special {
+  animation: SpecialText 2s ease-in infinite;
+}
+
+@keyframes SpecialText {
+  0%  {color: #203669;}
+  20% {color: #E9998B;}
+  40% {color: #ECE49F;}
+  60% {color: #C6E29B;}
+  80% {color: #38BDD2;}
+  100% {color: #203669;}
 }

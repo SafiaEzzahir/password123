@@ -9,6 +9,7 @@ export default function PasswordSection() {
     const [CharacterNumber, setCharacterNumber] = useState(0)
     const [ErrorMessage, setErrorMessage] = useState(null)
     const [Plural, setPlural] = useState('s')
+    const [ErrorMessageClass, setErrorMessageClass] = useState('neutral')
 
     function isInString(String, Characters) {
         for (let Char of Characters) {
@@ -26,18 +27,25 @@ export default function PasswordSection() {
         
         if (CurrentPassword.length >= 30) {
             if (isInString(CurrentPassword, SCharacters) && isInString(CurrentPassword, NumCharacters)) {
-                setErrorMessage("easter egg: password is *super* secure!!")
-            } else setErrorMessage("password is secure :)")
+                setErrorMessage("password is *super* secure!!")
+                setErrorMessageClass('Special')
+            } else {
+                setErrorMessage("password is secure :)")
+                setErrorMessageClass("Good")
+            }
         } else if (CurrentPassword.length <= 5) {
             setErrorMessage("password is too short")
+            setErrorMessageClass("Bad")
         } else {
             var ContainsSC = isInString(CurrentPassword, SCharacters)
             var ContainsNum = isInString(CurrentPassword, NumCharacters)
             if (!ContainsNum) {
                 setErrorMessage("no numbers in password!!")
+                setErrorMessageClass("Bad")
             } else if (!ContainsSC) {
                 setErrorMessage("no special characters in password!!")
-            } else {setErrorMessage("password is secure :)")}
+                setErrorMessageClass("Bad")
+            } else {setErrorMessage("password is secure :)"); setErrorMessageClass("Good")}
         }
 
         if (CurrentPassword.length == 1) {
@@ -52,7 +60,7 @@ export default function PasswordSection() {
         <div id="PasswordSection">
             <input type="password" name="password" id="PasswordInput" onChange={onPasswordInputChanged}/>
             <p id="CharacterNumberId">{CharacterNumber} character{Plural}</p>
-            <p>{ErrorMessage}</p>
+            <p className={ErrorMessageClass} id='ErrorMessage'>{ErrorMessage}</p>
         </div>
     )
 }
