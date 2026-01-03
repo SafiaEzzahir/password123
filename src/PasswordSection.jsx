@@ -22,16 +22,17 @@ export default function PasswordSection() {
         setCharacterNumber(CurrentPassword.length)
         
         if (CurrentPassword.length >= 30) {
-            setErrorMessage(null)
+            if (isInString(CurrentPassword, SCharacters) && isInString(CurrentPassword, NumCharacters)) {
+                setErrorMessage("easter egg: password is *super* secure!!")
+            } else setErrorMessage("password is secure :)")
         } else {
             var ContainsSC = isInString(CurrentPassword, SCharacters)
             var ContainsNum = isInString(CurrentPassword, NumCharacters)
             if (!ContainsNum) {
                 setErrorMessage("no numbers in password!!")
             } else if (!ContainsSC) {
-                console.log("here")
                 setErrorMessage("no special characters in password!!")
-            } else {setErrorMessage(null)}
+            } else {setErrorMessage("password is secure :)")}
         }
 
     }
