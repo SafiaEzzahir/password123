@@ -4,6 +4,11 @@
   justify-content: center;
   align-items: center;
   height: 96vh;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
 }
 
 #PasswordSection {
