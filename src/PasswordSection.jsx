@@ -8,6 +8,7 @@ const SCharacters = ['!', '@', '#', '£', '€', '$', '%', '^', '&', '*', '(', '
 export default function PasswordSection() {
     const [CharacterNumber, setCharacterNumber] = useState(0)
     const [ErrorMessage, setErrorMessage] = useState(null)
+    const [Plural, setPlural] = useState('s')
 
     function isInString(String, Characters) {
         for (let Char of Characters) {
@@ -37,12 +38,18 @@ export default function PasswordSection() {
             } else {setErrorMessage("password is secure :)")}
         }
 
+        if (CurrentPassword.length == 1) {
+            setPlural('')
+        } else {
+            setPlural('s')
+        }
+
     }
 
     return (
         <div id="PasswordSection">
             <input type="password" name="password" id="PasswordInput" onChange={onPasswordInputChanged}/>
-            <p id="CharacterNumberId">{CharacterNumber}</p>
+            <p id="CharacterNumberId">{CharacterNumber} character{Plural}</p>
             <p>{ErrorMessage}</p>
         </div>
     )
